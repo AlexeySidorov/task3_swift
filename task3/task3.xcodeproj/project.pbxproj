@@ -26,6 +26,7 @@
 		F3FB916C73CF2D8B57253A9C /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FB9B365ABE791BA505BDD0 /* Friend.swift */; };
 		F3FB922D7891A6926FCBC562 /* FriendUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FB964E3F7303469652A1A1 /* FriendUtility.swift */; };
 		F3FB9303905146F96847D43D /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FB9B5F5D1250B911C3E819 /* BaseViewModel.swift */; };
+		F3FB9379249C04E13D458032 /* UserDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FB95588A8BAF098A9A6F07 /* UserDetailsView.swift */; };
 		F3FB93DA1BC2F9B25A84E119 /* ColorSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FB97A49F79644FCD258BB2 /* ColorSettings.swift */; };
 		F3FB9696C962A84979B4B991 /* UsersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FB99320BDD33A80F4045E8 /* UsersViewModel.swift */; };
 		F3FB974D50EF07C75BB7F6C6 /* FriendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FB983481A2893473CF68EC /* FriendView.swift */; };
@@ -100,6 +101,7 @@
 		F3FB9326A20738C3278DEAFA /* DialogService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DialogService.swift; sourceTree = "<group>"; };
 		F3FB9386C4E2714765E1486F /* NavigationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationService.swift; sourceTree = "<group>"; };
 		F3FB944E1EF30241FAD9DCFA /* RealmExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmExtension.swift; sourceTree = "<group>"; };
+		F3FB95588A8BAF098A9A6F07 /* UserDetailsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDetailsView.swift; sourceTree = "<group>"; };
 		F3FB963D55B2F809EEB30970 /* FriendViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendViewModel.swift; sourceTree = "<group>"; };
 		F3FB964E3F7303469652A1A1 /* FriendUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendUtility.swift; sourceTree = "<group>"; };
 		F3FB97A46B89CBCFFDC427A5 /* UserUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserUtility.swift; sourceTree = "<group>"; };
@@ -239,6 +241,7 @@
 				F3FB912530530BBDB540F18D /* BaseView.swift */,
 				F3FB913450D6BB7E73D5B74C /* UsersView.swift */,
 				F3FB983481A2893473CF68EC /* FriendView.swift */,
+				F3FB9DBC1814840FA5FAF764 /* CustomView */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -351,6 +354,14 @@
 				F3FB943A08C4FE924C699118 /* Responses */,
 			);
 			path = Infrastructure;
+			sourceTree = "<group>";
+		};
+		F3FB9DBC1814840FA5FAF764 /* CustomView */ = {
+			isa = PBXGroup;
+			children = (
+				F3FB95588A8BAF098A9A6F07 /* UserDetailsView.swift */,
+			);
+			path = CustomView;
 			sourceTree = "<group>";
 		};
 		F3FB9E1364674C1530234AE2 /* Managers */ = {
@@ -674,6 +685,7 @@
 				F3FB9CAFCBD72E066A8E9E5D /* UserUtility.swift in Sources */,
 				F3FB922D7891A6926FCBC562 /* FriendUtility.swift in Sources */,
 				F3FB9C20E00C70DF1D22961F /* RealmExtension.swift in Sources */,
+				F3FB9379249C04E13D458032 /* UserDetailsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

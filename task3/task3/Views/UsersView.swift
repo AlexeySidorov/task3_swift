@@ -47,7 +47,8 @@ class UsersView: BaseView {
             let userCell = tableView.dequeueReusableCell(withIdentifier: "UserItemCell") as! UserItemCell
             userCell.item = nil
             userCell.setData(value: item)
-            self.setDetailsView(cell: userCell, item: item)
+            userCell.accessoryView = nil
+            userCell.accessoryView = setDetailsView(cellHeigth: userCell.frame.height, item: item)
 
             return userCell
 
@@ -68,19 +69,5 @@ class UsersView: BaseView {
                 sSelf.TableView.reloadData()
             }
         }).disposed(by: disposeBag)
-    }
-
-    private func setDetailsView(cell: UITableViewCell, item: UserResponse) {
-        let viewContainer = UIView(frame: CGRect(x: 0, y: 0, width: 40, height: cell.frame.height))
-        let status = UIImageView(image: UIImage(named: item.isActive ? "ActiveUser" : "NotActiveUser"))
-        let arrow = UIImageView(image: UIImage(named: "DisclosureIndicator"))
-        status.frame = CGRect(x: 0, y: 8, width: 24, height: 24)
-        arrow.frame = CGRect(x: status.frame.origin.x + 32, y: 13, width: 8, height: 14)
-
-        viewContainer.addSubview(status)
-        viewContainer.addSubview(arrow)
-
-        cell.accessoryView = nil
-        cell.accessoryView = viewContainer
     }
 }
