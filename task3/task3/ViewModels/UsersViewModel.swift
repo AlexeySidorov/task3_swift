@@ -42,31 +42,38 @@ public class UsersViewModel: BaseViewModel {
         }
 
         itemSelectCommand.subscribe({ [weak self] item in
-            guard item.element != nil else {
-                return
+            if let sSelf = self {
+                guard let value = item.element else {
+                    return
+                }
+                
+                if !value.isActive { return }
+                
+                sSelf._navigationService.showViewModel(viewModel: FriendViewModel.self, value: value, root: false, animation: true)
             }
-
         }).disposed(by: disposeBag)
 
         updateCommand.subscribe({ [weak self] _ in
-            self?.setUsers()
+            if let sSelf = self {
+                sSelf.setUsers()
+            }
         }).disposed(by: disposeBag)
     }
 
     private func setUsers() {
         showProgressDialog.on(.next((true, "Please wait")))
         _restService.getUsers().subscribe(onNext: { [weak self] response in
+            if let sSelf = self {
+                guard let users = response else {
+                    sSelf._dialogService.showDialog(title: "Users", message: "User list empty", isBottom: false)
+                            .subscribe().disposed(by: sSelf.disposeBag)
+                    return
+                }
 
-            guard let users = response else {
-                self?._dialogService.showDialog(title: "Users", message: "User list empty", isBottom: false)
-                        .subscribe().disposed(by: self!.disposeBag)
-                return
+                sSelf._userService.addOrUpdateUsers(users: UserUtility.Instance.convertUsersResponseToUsers(users: users))
+                sSelf.showProgressDialog.on(.next((false, "")))
+                sSelf.getUsers()
             }
-
-            self?._userService.addOrUpdateUsers(users: UserUtility.Instance.convertUsersResponseToUsers(users: users))
-            self?.showProgressDialog.on(.next((false, "")))
-            self?.getUsers()
-
         }).disposed(by: disposeBag)
     }
 

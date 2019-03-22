@@ -24,6 +24,7 @@ class BaseView: UIViewController {
     }
 
     override func viewDidLoad() {
+
         if (whiteColorStatusBar) {
             initNavigationBar()
             statusBarStyle = UIStatusBarStyle.lightContent
@@ -39,15 +40,19 @@ class BaseView: UIViewController {
         intProgressDialog()
 
         viewModel.showProgressDialog.subscribe { [weak self] value in
-            guard let element = value.element else {
-                return
-            }
-            let (isShow, title) = element
+            if let sSelf = self {
 
-            if isShow {
-                self?.showProgressDialog(title: title)
-            } else {
-                self?.closeProgressDialog()
+                guard let element = value.element else {
+                    return
+                }
+
+                let (isShow, title) = element
+
+                if isShow {
+                    sSelf.showProgressDialog(title: title)
+                } else {
+                    sSelf.closeProgressDialog()
+                }
             }
         }.disposed(by: dispose)
     }
@@ -67,9 +72,11 @@ class BaseView: UIViewController {
     }
 
     func initNavigationBar() {
-        navigationController?.navigationBar.barTintColor = ColorSettings.Instance.primaryColor
-        navigationController?.navigationBar.tintColor = UIColor.white
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        if let navController = navigationController{
+            navController.navigationBar.barTintColor = ColorSettings.Instance.primaryColor
+            navController.navigationBar.tintColor = UIColor.white
+            navController.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        }
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

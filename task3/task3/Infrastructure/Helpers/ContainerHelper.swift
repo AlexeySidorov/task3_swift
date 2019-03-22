@@ -42,7 +42,8 @@ class ContainerHelper {
         }
 
         container.register(FriendViewModel.self) { r in
-            FriendViewModel(navigationService: r.resolve(NavigationService.self)!, userService: r.resolve(UserService.self)!)
+            FriendViewModel(navigationService: r.resolve(NavigationService.self)!, userService: r.resolve(UserService.self)!,
+                    dialogService: r.resolve(DialogService.self)!)
         }
 
         // View

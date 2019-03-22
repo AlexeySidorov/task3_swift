@@ -20,7 +20,7 @@ class UsersView: BaseView {
     @IBOutlet weak var TableView: UITableView!
 
     override func viewDidLoad() {
-      //  self.defaultBackground = false
+        self.defaultBackground = false
         self.whiteColorStatusBar = true
 
         super.viewDidLoad()
@@ -37,7 +37,7 @@ class UsersView: BaseView {
     }
 
     func addBarButton() {
-        updateButton = UIBarButtonItem(title: "Select", style: .plain, target: self, action: nil)
+        updateButton = UIBarButtonItem(title: "Update", style: .plain, target: self, action: nil)
         self.navigationItem.rightBarButtonItem = updateButton
     }
 
@@ -55,18 +55,18 @@ class UsersView: BaseView {
 
         Observable.zip(TableView.rx.itemSelected, TableView.rx.modelSelected(UserResponse.self))
                 .bind(onNext: { [weak self] indexPath, item in
-                    if !item.isActive {
-                        return
+                    if let sSelf = self {
+                        sSelf.TableView.deselectRow(at: indexPath, animated: true)
+                        sSelf.currentViewModel.itemSelectCommand.onNext(item)
                     }
-
-                    self?.TableView.deselectRow(at: indexPath, animated: true)
-                    self?.currentViewModel.itemSelectCommand.onNext(item)
                 }).disposed(by: disposeBag)
 
         updateButton.rx.tap.bind(to: currentViewModel.updateCommand).disposed(by: disposeBag)
 
         currentViewModel.refreshUsers.subscribe({ [weak self] _ in
-            self?.TableView.reloadData()
+            if let sSelf = self {
+                sSelf.TableView.reloadData()
+            }
         }).disposed(by: disposeBag)
     }
 

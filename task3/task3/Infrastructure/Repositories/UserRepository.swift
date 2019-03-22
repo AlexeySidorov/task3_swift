@@ -10,7 +10,7 @@ protocol UserService {
     func clearDataBase()
     func addOrUpdateUsers(users: [User])
     func getUsers() -> [User]
-    func getFriends(ids: [Friend]) -> [User]
+    func getFriends(friends: [Friend]) -> [User]
     func getIsUsers() -> Bool
 }
 
@@ -22,9 +22,15 @@ class UserRepository: UserService {
         return users.toArray()
     }
 
-    func getFriends(ids: [Friend]) -> [User] {
+    func getFriends(friends: [Friend]) -> [User] {
         let result = realm.objects(User.self)
-        let users = result.filter("ID IN %@", ids)
+
+        var array = Array<Int>()
+        for friend in friends {
+            array.append(friend.ID)
+        }
+
+        let users = result.filter("ID IN %@", array)
             return users.toArray()
     }
 
