@@ -14,14 +14,17 @@ public class FriendViewModel: BaseViewModel {
     let _navigationService: NavigationService!
     let _userService: UserService!
     let _dialogService: DialogService!
+    let _deviceService: DeviceService!
     private let disposeBag = DisposeBag()
     let itemSelectCommand = PublishSubject<UserResponse>()
     var dataSource: BehaviorRelay<[UserResponse]> = BehaviorRelay(value: [])
 
-    init(navigationService: NavigationService, userService: UserService, dialogService: DialogService) {
+    init(navigationService: NavigationService, userService: UserService, dialogService: DialogService,
+         deviceService: DeviceService) {
         _navigationService = navigationService
         _userService = userService
         _dialogService = dialogService
+        _deviceService = deviceService
     }
 
     override func initViewModel(value: Any?) {

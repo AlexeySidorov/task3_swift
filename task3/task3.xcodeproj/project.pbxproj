@@ -24,6 +24,7 @@
 		9E44808F2243784D00AB318B /* task3UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E44808E2243784D00AB318B /* task3UITests.swift */; };
 		F3FB90315C5CC393C893CCF9 /* UserResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FB902B13B202CD2690BA03 /* UserResponse.swift */; };
 		F3FB916C73CF2D8B57253A9C /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FB9B365ABE791BA505BDD0 /* Friend.swift */; };
+		F3FB91E3D6395B4D7C1B5445 /* DeviceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FB9ABEE10DDFB03F1E4D11 /* DeviceService.swift */; };
 		F3FB922D7891A6926FCBC562 /* FriendUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FB964E3F7303469652A1A1 /* FriendUtility.swift */; };
 		F3FB9303905146F96847D43D /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FB9B5F5D1250B911C3E819 /* BaseViewModel.swift */; };
 		F3FB9379249C04E13D458032 /* UserDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FB95588A8BAF098A9A6F07 /* UserDetailsView.swift */; };
@@ -110,6 +111,7 @@
 		F3FB98E0AA61D1419D157EB5 /* SplashViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashViewModel.swift; sourceTree = "<group>"; };
 		F3FB99320BDD33A80F4045E8 /* UsersViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersViewModel.swift; sourceTree = "<group>"; };
 		F3FB99E2DAC9EE6DA256A9D3 /* Enums.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
+		F3FB9ABEE10DDFB03F1E4D11 /* DeviceService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceService.swift; sourceTree = "<group>"; };
 		F3FB9B365ABE791BA505BDD0 /* Friend.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Friend.swift; sourceTree = "<group>"; };
 		F3FB9B5F5D1250B911C3E819 /* BaseViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
 		F3FB9C1CB04A058C2CA65E77 /* RestService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestService.swift; sourceTree = "<group>"; };
@@ -260,6 +262,7 @@
 				F3FB9C1CB04A058C2CA65E77 /* RestService.swift */,
 				F3FB9326A20738C3278DEAFA /* DialogService.swift */,
 				F3FB9386C4E2714765E1486F /* NavigationService.swift */,
+				F3FB9ABEE10DDFB03F1E4D11 /* DeviceService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -686,6 +689,7 @@
 				F3FB922D7891A6926FCBC562 /* FriendUtility.swift in Sources */,
 				F3FB9C20E00C70DF1D22961F /* RealmExtension.swift in Sources */,
 				F3FB9379249C04E13D458032 /* UserDetailsView.swift in Sources */,
+				F3FB91E3D6395B4D7C1B5445 /* DeviceService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

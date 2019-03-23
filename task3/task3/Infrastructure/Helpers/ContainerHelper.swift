@@ -31,6 +31,10 @@ class ContainerHelper {
             RestApi()
         }
 
+        container.register(DeviceService.self) { s in
+            DeviceInfo()
+        }
+
         // View models
         container.register(SplashViewModel.self) { r in
             SplashViewModel(navigationService: r.resolve(NavigationService.self)!)
@@ -43,7 +47,7 @@ class ContainerHelper {
 
         container.register(FriendViewModel.self) { r in
             FriendViewModel(navigationService: r.resolve(NavigationService.self)!, userService: r.resolve(UserService.self)!,
-                    dialogService: r.resolve(DialogService.self)!)
+                    dialogService: r.resolve(DialogService.self)!, deviceService: r.resolve(DeviceService.self)!)
         }
 
         // View
