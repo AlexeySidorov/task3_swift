@@ -116,4 +116,18 @@ class FriendView: BaseView {
             }
         }).disposed(by: disposeBag)
     }
+
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+
+        About.sizeToFit()
+
+        let headerView = TableView.tableHeaderView
+        if let header = headerView {
+            var frame = header.frame
+            frame.size.height = About.frame.origin.y + About.frame.height + 60
+            header.frame = frame
+            TableView.tableHeaderView = header
+        }
+    }
 }
