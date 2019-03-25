@@ -15,6 +15,17 @@ class FriendView: BaseView {
     private let disposeBag = DisposeBag()
     var currentViewModel: FriendViewModel!
     @IBOutlet weak var TableView: UITableView!
+    @IBOutlet weak var UserName: UILabel!
+    @IBOutlet weak var Status: UIView!
+    @IBOutlet weak var Fruit: UIImageView!
+    @IBOutlet weak var Age: UILabel!
+    @IBOutlet weak var Date: UILabel!
+    @IBOutlet weak var Email: UILabel!
+    @IBOutlet weak var Phone: UILabel!
+    @IBOutlet weak var Coordinates: UILabel!
+    @IBOutlet weak var Address: UILabel!
+    @IBOutlet weak var About: UILabel!
+    @IBOutlet weak var TitleFriends: UILabel!
 
     override func viewDidLoad() {
         self.defaultBackground = false
@@ -28,6 +39,8 @@ class FriendView: BaseView {
         TableView.separatorStyle = .none
         TableView.rowHeight = 62
         TableView.register(UINib(nibName: "UserItemCell", bundle: nil), forCellReuseIdentifier: "UserItemCell")
+
+        Status.layer.cornerRadius = 5;
 
         binding()
     }
@@ -52,5 +65,55 @@ class FriendView: BaseView {
                         sSelf.currentViewModel.itemSelectCommand.onNext(item)
                     }
                 }).disposed(by: disposeBag)
+
+        setBindingDetailsUser()
+    }
+
+    func setBindingDetailsUser() {
+        currentViewModel.fruit.bind(onNext: { [weak self] fruit in
+            if let sSelf = self {
+                sSelf.Fruit.image = fruit.getImage()
+            }
+        }).disposed(by: disposeBag)
+
+        currentViewModel.statusUser.bind(onNext: { [weak self] eyeColor in
+            if let sSelf = self {
+                sSelf.Status.backgroundColor = eyeColor.getColor()
+            }
+        }).disposed(by: disposeBag)
+
+        currentViewModel.userName.bind(to: UserName.rx.text).disposed(by: disposeBag)
+        currentViewModel.age.bind(to: Age.rx.text).disposed(by: disposeBag)
+        currentViewModel.email.bind(to: Email.rx.text).disposed(by: disposeBag)
+        currentViewModel.phone.bind(to: Phone.rx.text).disposed(by: disposeBag)
+        currentViewModel.address.bind(to: Address.rx.text).disposed(by: disposeBag)
+        currentViewModel.dateRegistered.bind(to: Date.rx.text).disposed(by: disposeBag)
+        currentViewModel.coordinates.bind(to: Coordinates.rx.text).disposed(by: disposeBag)
+        currentViewModel.about.bind(to: About.rx.text).disposed(by: disposeBag)
+        currentViewModel.titleFriends.bind(to: TitleFriends.rx.text).disposed(by: disposeBag)
+
+        let phoneTap = UITapGestureRecognizer()
+        Phone.addGestureRecognizer(phoneTap)
+        phoneTap.rx.event.bind(onNext: { [weak self] recognizer in
+            if let sSelf = self {
+                sSelf.currentViewModel.phoneTapCommand.onNext(())
+            }
+        }).disposed(by: disposeBag)
+
+        let emailTap = UITapGestureRecognizer()
+        Email.addGestureRecognizer(emailTap)
+        emailTap.rx.event.bind(onNext: { [weak self] recognizer in
+            if let sSelf = self {
+                sSelf.currentViewModel.emailTapCommand.onNext(())
+            }
+        }).disposed(by: disposeBag)
+
+        let coordinatesTap = UITapGestureRecognizer()
+        Coordinates.addGestureRecognizer(coordinatesTap)
+        coordinatesTap.rx.event.bind(onNext: { [weak self] recognizer in
+            if let sSelf = self {
+                sSelf.currentViewModel.coordinatesTapCommand.onNext(())
+            }
+        }).disposed(by: disposeBag)
     }
 }

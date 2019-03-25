@@ -18,6 +18,20 @@ public class FriendViewModel: BaseViewModel {
     private let disposeBag = DisposeBag()
     let itemSelectCommand = PublishSubject<UserResponse>()
     var dataSource: BehaviorRelay<[UserResponse]> = BehaviorRelay(value: [])
+    var userName: BehaviorRelay<String> = BehaviorRelay(value: "")
+    var coordinates: BehaviorRelay<String> = BehaviorRelay(value: "")
+    var email: BehaviorRelay<String> = BehaviorRelay(value: "")
+    var address: BehaviorRelay<String> = BehaviorRelay(value: "")
+    var age: BehaviorRelay<String> = BehaviorRelay(value: "")
+    var dateRegistered: BehaviorRelay<String> = BehaviorRelay(value: "")
+    var phone: BehaviorRelay<String> = BehaviorRelay(value: "")
+    var about: BehaviorRelay<String> = BehaviorRelay(value: "")
+    var titleFriends: BehaviorRelay<String> = BehaviorRelay(value: "")
+    var statusUser: BehaviorRelay<EyeColor> = BehaviorRelay(value: EyeColor.None)
+    var fruit: BehaviorRelay<FavoriteFruit> = BehaviorRelay(value: FavoriteFruit.None)
+    var phoneTapCommand = PublishSubject<Void>()
+    var emailTapCommand = PublishSubject<Void>()
+    var coordinatesTapCommand = PublishSubject<Void>()
 
     init(navigationService: NavigationService, userService: UserService, dialogService: DialogService,
          deviceService: DeviceService) {
@@ -32,8 +46,11 @@ public class FriendViewModel: BaseViewModel {
 
         if let user = value as? UserResponse {
 
+            setDetailsUser(user: user)
+            setDetailsUserCommand(user: user)
+
             if user.friends.count > 0 {
-                var users = _userService.getFriends(friends: FriendUtility.Instance.convertFriendsResponseToFriends(users: user.friends))
+                let users = _userService.getFriends(friends: FriendUtility.Instance.convertFriendsResponseToFriends(users: user.friends))
                 if users.count > 0 {
                     dataSource.accept(UserUtility.Instance.convertUsersToUsersResponse(users: users))
                 }
@@ -55,5 +72,44 @@ public class FriendViewModel: BaseViewModel {
         } else {
             _navigationService.backNavigation(animation: true)
         }
+    }
+
+    private func setDetailsUser(user: UserResponse) {
+        var dateStr = "Not specific"
+        if let date = user.registered.convert(format: "HH:mm dd.MM.yy") {
+            dateStr = date
+        }
+
+        userName.accept(user.name)
+        coordinates.accept("\(user.latitude), \(user.longitude)")
+        email.accept(user.email)
+        address.accept(user.address)
+        age.accept("\(user.age)")
+        dateRegistered.accept(dateStr)
+        phone.accept(user.phone)
+        about.accept(user.about)
+        titleFriends.accept("Friends by \(user.name)")
+        statusUser.accept(user.eyeColor)
+        fruit.accept(user.favoriteFruit)
+    }
+
+    private func setDetailsUserCommand(user: UserResponse) {
+        phoneTapCommand.subscribe(onNext: { [weak self] _ in
+            if let sSelf = self {
+                sSelf._deviceService.callPhone(phoneNumber: user.phone)
+            }
+        }).disposed(by: disposeBag)
+
+        emailTapCommand.subscribe(onNext: { [weak self] _ in
+            if let sSelf = self {
+                sSelf._deviceService.sendEmail(email: user.email)
+            }
+        }).disposed(by: disposeBag)
+
+        coordinatesTapCommand.subscribe(onNext: { [weak self] _ in
+            if let sSelf = self {
+                sSelf._deviceService.sendMapPoint(latitude: user.latitude, longitude: user.longitude)
+            }
+        }).disposed(by: disposeBag)
     }
 }

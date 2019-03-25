@@ -24,6 +24,7 @@
 		9E44808F2243784D00AB318B /* task3UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E44808E2243784D00AB318B /* task3UITests.swift */; };
 		F3FB90315C5CC393C893CCF9 /* UserResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FB902B13B202CD2690BA03 /* UserResponse.swift */; };
 		F3FB916C73CF2D8B57253A9C /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FB9B365ABE791BA505BDD0 /* Friend.swift */; };
+		F3FB9179D3584D503753EC4C /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FB9FA993281ED44720C82E /* Extension.swift */; };
 		F3FB91E3D6395B4D7C1B5445 /* DeviceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FB9ABEE10DDFB03F1E4D11 /* DeviceService.swift */; };
 		F3FB922D7891A6926FCBC562 /* FriendUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FB964E3F7303469652A1A1 /* FriendUtility.swift */; };
 		F3FB9303905146F96847D43D /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FB9B5F5D1250B911C3E819 /* BaseViewModel.swift */; };
@@ -118,6 +119,7 @@
 		F3FB9DBD0C4AF5F3B5C146D0 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		F3FB9E53473CE9143334FFFB /* LogManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogManager.swift; sourceTree = "<group>"; };
 		F3FB9F68FA94534B1C16A099 /* ConfigurationRealmHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurationRealmHelper.swift; sourceTree = "<group>"; };
+		F3FB9FA993281ED44720C82E /* Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		F61CA12160C2FE7C82B47EB6 /* Pods-task3Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-task3Tests.release.xcconfig"; path = "Target Support Files/Pods-task3Tests/Pods-task3Tests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -231,6 +233,7 @@
 			children = (
 				9E1666E62243A23000829D68 /* UIColorExtension.swift */,
 				F3FB944E1EF30241FAD9DCFA /* RealmExtension.swift */,
+				F3FB9FA993281ED44720C82E /* Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -690,6 +693,7 @@
 				F3FB9C20E00C70DF1D22961F /* RealmExtension.swift in Sources */,
 				F3FB9379249C04E13D458032 /* UserDetailsView.swift in Sources */,
 				F3FB91E3D6395B4D7C1B5445 /* DeviceService.swift in Sources */,
+				F3FB9179D3584D503753EC4C /* Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
